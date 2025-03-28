@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     
     'profiles',
     'products',
-    'accounts'
+    'accounts',
+    'orders',
     
 
 

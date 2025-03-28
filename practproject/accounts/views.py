@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate,login,logout,get_user_model
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from .forms import RegisterForm,LoginForm
+
 # Create your views here.
 
 User = get_user_model()

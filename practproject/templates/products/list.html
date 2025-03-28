@@ -7,7 +7,7 @@ Products{% endblock %}
   
         {% for object in object_list %}
             <div>
-                {{ object.name }}
+                {{ object.title }}
                 {% include 'products/detail_snippet.html' with product=object %} 
             </div>
         {% endfor %}

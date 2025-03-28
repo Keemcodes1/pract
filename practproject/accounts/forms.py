@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-
+ 
 User = get_user_model()
 class RegisterForm(forms.Form):
     first_name = forms.CharField(max_length=100)
@@ -39,7 +39,7 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'class': 'form-control',
-            'id': 'user-assword'
+            'id': 'user-password'
         }
     ))
     # def clean(self):
@@ -50,6 +50,7 @@ class LoginForm(forms.Form):
         qs = User.objects.filter(username__iexact=username)
         if not qs.exists():
             raise forms.ValidationError('This is an invalid username')
+        return username
 
 
 

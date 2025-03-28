@@ -16,9 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from accounts.views import login_view,logout_view,register_view
+from orders.views import order_checkout_view
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('products.urls')),
-    path('accounts/', include('accounts.urls'))
+    path('checkout/', order_checkout_view),
+    # path('accounts/', include('accounts.urls')),
+     
+    path('logout/', logout_view),
+    path('register/', register_view),
+    path('', TemplateView.as_view(template_name='base.html')),
+
+    
 ]
+ 
