@@ -11,6 +11,8 @@ def order_checkout_view(request):
     if not qs.exists():
         return redirect('/')
     product = qs.first()
+    # if not product.has_inventory:
+    #     return redirect('/no-inventory')
     user = request.user
     order_id = request.session.get('order_id')
     order_obj= None
@@ -31,8 +33,10 @@ def order_checkout_view(request):
     if form.is_valid():
        order_obj.shipping_address = form.cleaned_data.get('shipping_address')
        order_obj.billing_address = form.cleaned_data.get('billing_address')
-
+       order_obj.mark_paid(save=False)
        order_obj.save()
+       del request.session['order_id']
+       return redirect("/success")
 
-    return render(request, 'forms.html',{'form':form})
+    return render(request, 'orders/checkout.html',{'form':form,'order_obj':order_obj})
  

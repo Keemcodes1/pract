@@ -19,5 +19,10 @@ class Products (models.Model):
         return self.inventory > 0
         
 
-    def __str__ (self):
-        return self.title
+    def remove_item_from_inventory(self,count=1, save=True):
+        current_inv = self.inventory
+        current_inv -= 1
+        self.inventory = current_inv
+        if save == True:
+            self.save()
+        return self.inventory
