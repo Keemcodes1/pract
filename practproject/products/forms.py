@@ -10,7 +10,7 @@ from .models import Products
 class ProductModelForm(forms.ModelForm):
     class Meta:
         model = Products
-        fields = ['title','price','description','image','quantity']
+        fields = ['title','price','description','image','media','quantity']
 
         def clean_title(self):
             data = self.cleaned_data.get('title')
