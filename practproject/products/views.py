@@ -50,10 +50,6 @@ def product_create_view(request,*args, **kwargs):
         if media:
             obj.media=media
 
-
-
-        obj.image = image
-        obj.media = media
         obj.user = request.user
         obj.save()
 
